@@ -1,0 +1,18 @@
+[project]
+name = "dearly-ai"
+version = "0.1.0"
+description = "A toolkit for generative AI Art."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Bryson Lee-Kwen", email = "brysonleekwen@gmail.com" }]
+
+dependencies = [
+  "openai"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["dearly_ai"]
