@@ -7,7 +7,11 @@ requires-python = ">=3.9"
 authors = [{ name = "Bryson Lee-Kwen", email = "brysonleekwen@gmail.com" }]
 
 dependencies = [
-  "openai"
+  "openai",
+  "fastapi",
+  "pydantic",
+  "python-dotenv",
+  "uvicorn"
 ]
 
 [build-system]
