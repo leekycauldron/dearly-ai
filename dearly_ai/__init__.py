@@ -1,1 +1,1 @@
-from ._hello_world import hello_world
+from ._openai_client import Client
