@@ -11,4 +11,4 @@ load_dotenv()
 
 
 if __name__ == "__main__":
-    dearly_ai.serve(os.getenv("OPENAI_API_KEY"))
+    dearly_ai.serve(os.getenv("OPENAI_API_KEY"), debug=True)

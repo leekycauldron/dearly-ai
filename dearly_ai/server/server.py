@@ -9,6 +9,7 @@ import os
 class ServerClient():
     def __init__(self) -> None:
         self.client = None
+        self.debug = False
 
 
 app = FastAPI()
@@ -40,7 +41,7 @@ def chat_with_ai(user_message: UserMessage):
     """
     try:
         # Get response from the AI
-        ai_response = client.client.response(user_message.message)
+        ai_response = client.client.response(user_message.message, debug=client.debug)
         
         return AIResponse(response=ai_response)
     
@@ -48,8 +49,9 @@ def chat_with_ai(user_message: UserMessage):
         return AIResponse(response=f"Error: {str(e)}")
 
 
-def serve(key):
+def serve(key, debug=False):
     client.client = Client(key)
+    client.debug = debug
     # Run the server (no reload with class approach)
     uvicorn.run("dearly_ai.server.server:app", host="127.0.0.1", port=8000, reload=False)
 
