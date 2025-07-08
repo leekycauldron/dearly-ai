@@ -58,6 +58,10 @@ class Client:
         with open("output.png", "wb") as f:
             f.write(image_bytes)
         return "output.png"
+    
+    def encode_image(self, image_path):
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode("utf-8")
 
     def response(self, message: str = None, debug=False) -> str:
         if message:
@@ -87,6 +91,10 @@ class Client:
                         "type": "function_call_output",
                         "call_id": tool_call.call_id,
                         "output": result_message
+                    })
+                    self._context.append({
+                        "type": "input_image",
+                        "image_url": f"data:image/jpeg;base64,{self.encode_image(image_path)}"
                     })
                 return self.response(debug=True)
 
